@@ -17,7 +17,7 @@
                 = f.password_field :password, { autocomplete: "off", class: "form-control" }
               - if devise_mapping.rememberable?
                 .form-group
-                  = f.check_box :remember_me, { class: "form-group" }
+                  = f.check_box :remember_me, { class: "form-control" }
                   = f.label :remember_me
               .actions
                 = f.submit "ログイン", { class: "pull-right btn btn-default" }

@@ -30,7 +30,7 @@
                   .col-sm-9.form-inline
                     = f.text_field :phone, { class: "form-control" }
                 = f.submit "保存", { class: "pull-right btn btn-default" }
-                = link_to "キャンセル", user_path(@user), { class: "pull-right btn btn-danger cancel" }
+                = link_to "キャンセル", user_path(@user), { class: "pull-right btn btn-danger margin-right" }
                 .clearfix
 
 - if @user.errors.any?
