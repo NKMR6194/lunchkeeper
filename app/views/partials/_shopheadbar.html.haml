@@ -1,0 +1,7 @@
+#nav
+  - if session[:shop_id]
+    = link_to "Edit Profile", edit_shop_path(session[:shop_id])
+    |
+    = link_to "Logout", shop_session_path, method: :delete
+  - else
+    = link_to "Login", new_shop_session_path

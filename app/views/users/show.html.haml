@@ -1,0 +1,28 @@
+= render "partials/userheadbar"
+%p
+  %strong Email:
+  = @user.email
+%p
+  %strong Crypted password:
+  = @user.crypted_password
+%p
+  %strong Salt:
+  = @user.salt
+%p
+  %strong Name:
+  = @user.name
+%p
+  %strong Phone:
+  = @user.phone
+%p
+  %strong Address:
+  = @user.address
+%p
+  %strong Position x:
+  = @user.position_x
+%p
+  %strong Position y:
+  = @user.position_y
+= link_to 'Edit', edit_user_path(@user)
+|
+= link_to 'Back', users_path

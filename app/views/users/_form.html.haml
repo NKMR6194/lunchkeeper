@@ -1,0 +1,48 @@
+= form_for(@user) do |f|
+  .field
+    = f.label :email
+    %br/
+    = f.text_field :email
+  .field
+    = f.label :password
+    %br/
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :phone
+    %br/
+    = f.text_field :phone
+  .field
+    = f.label :address
+    %br/
+    = f.text_area :address
+  .field
+    = f.label :pref
+    %br/
+    = f.text_area :pref
+  .field
+    = f.label :city
+    %br/
+    = f.text_area :city
+  .field
+    = f.label :position_x
+    %br/
+    = f.text_field :position_x
+  .field
+    = f.label :position_y
+    %br/
+    = f.text_field :position_y
+  .actions
+    = f.submit
+
+- if @user.errors.any?
+  - error_messages = @user.errors.full_messages.join(" \n")
+  :javascript
+    alert("#{pluralize(@user.errors.count, "error")} prohibited this user from being saved: \n " + #{error_messages});

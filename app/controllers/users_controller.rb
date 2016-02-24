@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :require_login, except: [:new, :create]
- 
+
 
   # GET /users
   # GET /users.json
@@ -35,8 +35,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        #redirect_to(:users, notice: 'User was successfully created')
-        format.html { redirect_to users_url, notice: 'User was successfully created.' }
+        format.html { redirect_to edit_user_path(@user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
