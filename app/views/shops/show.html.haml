@@ -1,43 +1,62 @@
-= render "partials/shopheadbar"
-%p
-  %strong Email:
-  = @shop.email
-%p
-  %strong Password digest:
-  = @shop.password_digest
-%p
-  %strong Name:
-  = @shop.name
-%p
-  %strong Phone:
-  = @shop.phone
-%p
-  %strong Address:
-  = @shop.address
-%p
-  %strong Pref:
-  = @shop.pref
-%p
-  %strong City:
-  = @shop.city
-%p
-  %strong Range:
-  = @shop.range
-%p
-  %strong Capability:
-  = @shop.capability
-%p
-  %strong Open at:
-  = @shop.open_at
-%p
-  %strong Close at:
-  = @shop.close_at
-%p
-  %strong Position x:
-  = @shop.position_x
-%p
-  %strong Position y:
-  = @shop.position_y
-= link_to 'Edit', edit_shop_path(@shop)
-|
-= link_to 'Back', shops_path
+#shop--show
+  .container
+    .row
+      .col-xs-12
+        .logo
+          %span.logo__text--big<> L
+          unch
+          %span.logo__text--big<> k
+          eeper
+        %h2 店舗プロフィール
+        %table.table
+          %tr
+            %th 名前
+            %td(colspan="2") ABCバーガー
+          %tr
+            %th(rowspan="3") 住所
+            %td 県
+            %td XX
+          %tr
+            %td 市区町村
+            %td XX
+          %tr
+            %td その他
+            %td XX-X-X
+          %tr
+            %th 電話番号
+            %td(colspan="2") xxx-xxxx-xxx
+          %tr
+            %th Eメール
+            %td(colspan="2") xxx@xxxx.com
+          %tr
+            %th 営業時間
+            %td(colspan="2") xx:xx 〜 xx:xx
+        %h2 本日の注文
+        %table.table
+          %tr
+            %th メニュー
+            %th 名前
+            %th 住所
+            %th 配達時間
+            %th 状態
+          %tr
+            %td Aセット
+            %td 山田　太郎
+            %td 〇〇県〇〇町1-2-4-5
+            %td 11:00 〜 12:00
+            %td
+              %button.btn.btn-warning.disabled 発送済み
+          %tr
+            %td Aセット
+            %td 山田　太郎
+            %td 〇〇県〇〇町1-2-4-5
+            %td 11:00 〜 12:00
+            %td
+              %button.btn.btn-warning 発送
+          %tr
+            %td Aセット
+            %td 山田　太郎
+            %td 〇〇県〇〇町1-2-4-5
+            %td 11:00 〜 12:00
+            %td
+              %button.btn.btn-warning 発送
