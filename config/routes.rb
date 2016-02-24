@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :shops, only: [:show]
+  resources :shops, only: [:index]
   resources :users, only: [:new, :create, :show, :edit, :update]
 
   resources :shop_sessions, only: [:new, :create, :destroy]

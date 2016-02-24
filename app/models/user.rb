@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
 	validates :email, uniqueness: true
 	has_many :plans
 
+	def full_address
+		"#{pref}#{city}#{address}"
+	end
+
 end
