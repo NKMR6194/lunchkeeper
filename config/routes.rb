@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+   registrations: 'users/registrations',
+   sessions: 'users/sessions'
+  }
+
   root 'welcome#index'
 
   resources :shops, only: [:show]
-  resources :users, only: [:new, :create, :show, :edit, :update]
 
   resources :shop_sessions, only: [:new, :create, :destroy]
   resources :user_sessions, only: [:new, :create, :destroy]
