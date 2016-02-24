@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'plans/index'
-
-  get 'plans/show'
-
   root 'welcome#index'
 
   resources :shops, only: [:show]
@@ -11,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :shop_sessions, only: [:new, :create, :destroy]
   resources :user_sessions, only: [:new, :create, :destroy]
+
+  resources :plans, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
