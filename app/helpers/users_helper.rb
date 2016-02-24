@@ -9,7 +9,7 @@ module UsersHelper
     shops.select do |shop|
       x_diff = (shop.position_x - user.position_x) * KM_PER_LAT
       y_diff = (shop.position_y - user.position_y) * KM_PER_LOT
-      shop.range >= Math.sqrt(x_diff * x_diff + y_diff * y_diff)
+      shop.range * shop.range >= x_diff * x_diff + y_diff * y_diff
     end
   end
 end
