@@ -4,6 +4,8 @@
       .col-xs-12
         = link_to root_path, { class: "logo" } do
           = render "partials/logo"
+        = link_to "ログアウト", destroy_shop_session_path, { method: :delete, class: "pull-right btn btn-danger margin-right" }
+        .clearfix
         %h2 店舗プロフィール
         %table.table
           %tr
