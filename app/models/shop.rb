@@ -3,7 +3,7 @@ class Shop < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	has_secure_password
-	has_many :menus
-	has_many :plan_shops
+
+  has_many :menus
+  has_many :plan_shops
 end
