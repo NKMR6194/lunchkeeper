@@ -1,4 +1,30 @@
-= render "partials/userheadbar"
-%h1 New User
-= render 'form'
-= link_to 'Back', users_path
+#user--new
+  .container
+    .row
+      .col-xs-12
+        .logo
+          %span.logo__text--big<> L
+          unch
+          %span.logo__text--big<> k
+          eeper
+        .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+          .form-window
+            %h1.form-window__heading 新規ユーザー登録
+            .form-window__body
+              = form_for(@user) do |f|
+                .form-group
+                  = f.label :mail
+                  = f.text_field :email, { class: "form-control", placeholder: "abc@example.com" }
+                .form-group
+                  = f.label :password
+                  = f.password_field :password, { class: "form-control", placeholder: "Password" }
+                .form-group
+                  = f.label :password_confirmation
+                  = f.password_field :password_confirmation, { class: "form-control", placeholder: "Password" }
+                = f.submit "登録", { class: "pull-right btn btn-default" }
+                .clearfix
+
+- if @user.errors.any?
+  - error_messages = @user.errors.full_messages.join(" \n")
+  :javascript
+    alert("#{pluralize(@user.errors.count, "error")} prohibited this user from being saved: \n " + #{error_messages});
