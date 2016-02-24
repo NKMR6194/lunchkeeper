@@ -4,6 +4,6 @@ class AddDetailsToUsers < ActiveRecord::Migration
     add_column :users, :phone, :string
     add_column :users, :pref, :string
     add_column :users, :city, :string
-    add_column :users, :address, :string
+    add_column :users, :address, :text
   end
 end
