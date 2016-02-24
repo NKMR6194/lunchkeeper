@@ -7,7 +7,7 @@
           unch
           %span.logo__text--big<> k
           eeper
-        %a.pull-right.btn.btn-default マイページ
+        = link_to "マイページ", user_path(current_user), { class: "pull-right btn btn-default" }
         .clearfix
         %h1.title 〇〇さんにお届けできるプラン一覧
         .plan
