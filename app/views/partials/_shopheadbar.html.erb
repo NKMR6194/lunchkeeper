@@ -1,9 +1,0 @@
-<div id="nav">
-  <% if session[:shop_id] %>
-    <%= link_to "Edit Profile", edit_shop_path(session[:shop_id]) %> |
-    <%= link_to "Logout", :shop_logout, method: :post %>
-  <% else %>
-    <%= link_to "Register", new_shop_path %> |
-    <%= link_to "Login", :shop_login %>
-  <% end %>
-</div>

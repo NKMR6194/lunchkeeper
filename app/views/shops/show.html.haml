@@ -1,0 +1,43 @@
+= render "partials/shopheadbar"
+%p
+  %strong Email:
+  = @shop.email
+%p
+  %strong Password digest:
+  = @shop.password_digest
+%p
+  %strong Name:
+  = @shop.name
+%p
+  %strong Phone:
+  = @shop.phone
+%p
+  %strong Address:
+  = @shop.address
+%p
+  %strong Pref:
+  = @shop.pref
+%p
+  %strong City:
+  = @shop.city
+%p
+  %strong Rang:
+  = @shop.rang
+%p
+  %strong Capability:
+  = @shop.capability
+%p
+  %strong Open at:
+  = @shop.open_at
+%p
+  %strong Close at:
+  = @shop.close_at
+%p
+  %strong Position x:
+  = @shop.position_x
+%p
+  %strong Position y:
+  = @shop.position_y
+= link_to 'Edit', edit_shop_path(@shop)
+|
+= link_to 'Back', shops_path

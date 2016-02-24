@@ -1,0 +1,30 @@
+= render "partials/userheadbar"
+%h1 Listing Users
+%table
+  %thead
+    %tr
+      %th Email
+      %th Crypted password
+      %th Salt
+      %th Name
+      %th Phone
+      %th Address
+      %th Position x
+      %th Position y
+      %th{:colspan => "3"}
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.crypted_password
+        %td= user.salt
+        %td= user.name
+        %td= user.phone
+        %td= user.address
+        %td= user.position_x
+        %td= user.position_y
+        %td= link_to 'Show', users_path
+        %td= link_to 'Edit', edit_user_path(user.id)
+        %td= link_to 'Destroy', user, :method => :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New User', new_user_path
