@@ -18,7 +18,7 @@ class ShopsControllerTest < ActionController::TestCase
 
   test "should create shop" do
     assert_difference('Shop.count') do
-      post :create, shop: { address: @shop.address, capability: @shop.capability, city: @shop.city, close_at: @shop.close_at, email: @shop.email, name: @shop.name, open_at: @shop.open_at, password_digest: @shop.password_digest, phone: @shop.phone, position_x: @shop.position_x, position_y: @shop.position_y, pref: @shop.pref, rang: @shop.rang }
+      post :create, shop: { address: @shop.address, capability: @shop.capability, city: @shop.city, close_at: @shop.close_at, email: @shop.email, name: @shop.name, open_at: @shop.open_at, password_digest: @shop.password_digest, phone: @shop.phone, position_x: @shop.position_x, position_y: @shop.position_y, pref: @shop.pref, range: @shop.range }
     end
 
     assert_redirected_to shop_path(assigns(:shop))
@@ -35,7 +35,7 @@ class ShopsControllerTest < ActionController::TestCase
   end
 
   test "should update shop" do
-    patch :update, id: @shop, shop: { address: @shop.address, capability: @shop.capability, city: @shop.city, close_at: @shop.close_at, email: @shop.email, name: @shop.name, open_at: @shop.open_at, password_digest: @shop.password_digest, phone: @shop.phone, position_x: @shop.position_x, position_y: @shop.position_y, pref: @shop.pref, rang: @shop.rang }
+    patch :update, id: @shop, shop: { address: @shop.address, capability: @shop.capability, city: @shop.city, close_at: @shop.close_at, email: @shop.email, name: @shop.name, open_at: @shop.open_at, password_digest: @shop.password_digest, phone: @shop.phone, position_x: @shop.position_x, position_y: @shop.position_y, pref: @shop.pref, range: @shop.range }
     assert_redirected_to shop_path(assigns(:shop))
   end
 

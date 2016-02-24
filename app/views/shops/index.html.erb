@@ -1,0 +1,51 @@
+<%= render "partials/shopheadbar" %>
+
+<h1>Listing Shops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Password digest</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Pref</th>
+      <th>City</th>
+      <th>range</th>
+      <th>Capability</th>
+      <th>Open at</th>
+      <th>Close at</th>
+      <th>Position x</th>
+      <th>Position y</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.email %></td>
+        <td><%= shop.password_digest %></td>
+        <td><%= shop.name %></td>
+        <td><%= shop.phone %></td>
+        <td><%= shop.address %></td>
+        <td><%= shop.pref %></td>
+        <td><%= shop.city %></td>
+        <td><%= shop.range %></td>
+        <td><%= shop.capability %></td>
+        <td><%= shop.open_at %></td>
+        <td><%= shop.close_at %></td>
+        <td><%= shop.position_x %></td>
+        <td><%= shop.position_y %></td>
+        <td><%= link_to 'Show', shop %></td>
+        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shop', new_shop_path %>
