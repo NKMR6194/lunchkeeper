@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223174809) do
+ActiveRecord::Schema.define(version: 20160224021514) do
 
   create_table "shops", force: :cascade do |t|
     t.string   "email"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160223174809) do
     t.text     "address"
     t.string   "pref"
     t.string   "city"
-    t.integer  "rang"
+    t.integer  "range"
     t.integer  "capability"
     t.datetime "open_at"
     t.datetime "close_at"
