@@ -3,10 +3,8 @@
     .row
       .col-xs-12
         .header.pull-right
-          %a.header__shop-login(href="")
-            店舗ログインはこちら
-          %a.header__user-login(href="")
-            ログイン
+          = link_to "店舗ログインはこちら", new_shop_session_path, { class: "header__shop-login" }
+          = link_to "ログイン", new_user_session_path, { class: "header__user-login" }
         .clearfix
         .logo
           %span.logo__text--big<> L
@@ -14,5 +12,4 @@
           %span.logo__text--big<> k
           eeper
         .registration
-          %button.btn.btn-warning
-            新規ユーザー登録
+          = link_to "新規ユーザー登録", new_user_path, { class: "btn btn-warning", role: "button" }
