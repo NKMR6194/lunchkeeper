@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  
+
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   before_filter :shop_authorize, except: [:new, :create]
 
@@ -29,7 +29,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
 
     respond_to do |format|
-      if @shop.save
+      if find_position and @shop.save
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
         format.json { render :show, status: :created, location: @shop }
       else
@@ -71,6 +71,28 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:email, :password, :password_confirmation, :name, :phone, :address, :pref, :city, :rang, :capability, :open_at, :close_at, :position_x, :position_y)
+      params.require(:shop).permit(:email, :password, :password_confirmation, :name, :phone, :address, :pref, :city, :rang, :capability, :open_at, :close_at)
+    end
+
+    def find_position
+
+      response = Unirest.get "http://maps.googleapis.com/maps/api/geocode/json?address="+@shop.address+","+@shop.pref+","+@shop.city, headers:{"accept" => "application/json"}
+      temp = response.body
+
+      if temp.class == "String" then
+        temp.force_encoding('ASCII-8BIT')
+        temp.gsub!(/\n/,'')
+        temp.gsub!(/\s/,'')
+        temp = JSON.parse(temp)
+      end
+
+      if temp["results"].class == "Array" then
+        return false
+      end
+
+      @shop.position_x = temp["results"][0]["geometry"]["location"]["lat"].to_f
+      @shop.position_y = temp["results"][0]["geometry"]["location"]["lng"].to_f
+
+      return true
     end
 end
