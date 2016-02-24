@@ -1,0 +1,40 @@
+#user--edit
+  .container
+    .row
+      .col-xs-12
+        = link_to root_path, { class: "logo" } do
+          = render "partials/logo"
+      .col-xs-12
+        .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+          .form-window
+            %h1.form-window__heading ユーザープロフィール編集
+            .form-window__body
+              = form_for(@user, html: { class: "form-horizontal" }) do |f|
+                .form-group
+                  = f.label :name, { class: "col-sm-3" }
+                  .col-sm-9.form-inline
+                    = f.text_field :name, { class: "form-control" }
+                .form-group
+                  %label.col-sm-3 住所
+                  .col-sm-9.form-inline
+                    = f.label :pref, { class: "col-sm-4 address-label" }
+                    = f.text_field :pref, { class: "col-sm-8 form-control" }
+                  .col-sm-9.col-sm-offset-3.form-inline
+                    = f.label :city, { class: "col-sm-4 address-label" }
+                    = f.text_field :city, { class: "col-sm-8 form-control" }
+                  .col-sm-9.col-sm-offset-3.form-inline
+                    = f.label :address, { class: "col-sm-4 address-label" }
+                    = f.text_field :address, { class: "col-sm-8 form-control" }
+                .form-group
+                  = f.label :phone, { class: "col-sm-3" }
+                  .col-sm-9.form-inline
+                    = f.text_field :phone, { class: "form-control" }
+                = f.submit "保存", { class: "pull-right btn btn-default" }
+                = link_to "キャンセル", user_path(@user), { class: "pull-right btn btn-danger cancel" }
+                .clearfix
+
+- if @user.errors.any?
+  - error_messages = @user.errors.full_messages.join(" \n")
+  :javascript
+    alert("#{pluralize(@user.errors.count, "error")} prohibited this user from being saved: \n " + #{error_messages});
+
