@@ -1,8 +1,22 @@
-= render "partials/shopheadbar"
-%h1 Login
-= render 'form'
-:javascript
-  $(function() {
-  <haml_silent>	 if flash[:notice]
-  </haml_silent><haml_block>	    alert("#{flash[:notice]}");
-  </haml_block>});
+#shop-session--new
+  .container
+    .row
+      .col-xs-12
+        .logo
+          %span.logo__text--big<> L
+          unch
+          %span.logo__text--big<> k
+          eeper
+        .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+          .form-window
+            %h1.form-window__heading 店舗ログイン
+            .form-window__body
+              = form_for @shop, url: shop_sessions_path do |f|
+                .form-group
+                  = f.label :email
+                  = f.text_field :email, { placeholder: "abc@example.com", class: "form-control" }
+                .form-group
+                  = f.label :password
+                  = f.password_field :password, { placeholder: "Password", class: "form-control" }
+                = f.submit "ログイン", { class: "pull-right btn btn-default" }
+                .clearfix
