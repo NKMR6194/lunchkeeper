@@ -39,24 +39,23 @@
             %th 住所
             %th 配達時間
             %th 状態
-          %tr
-            %td Aセット
-            %td 山田　太郎
-            %td 〇〇県〇〇町1-2-4-5
-            %td 11:00 〜 12:00
-            %td
-              %button.btn.btn-warning.disabled 発送済み
-          %tr
-            %td Aセット
-            %td 山田　太郎
-            %td 〇〇県〇〇町1-2-4-5
-            %td 11:00 〜 12:00
-            %td
-              %button.btn.btn-warning 発送
-          %tr
-            %td Aセット
-            %td 山田　太郎
-            %td 〇〇県〇〇町1-2-4-5
-            %td 11:00 〜 12:00
-            %td
-              %button.btn.btn-warning 発送
+          - @orders.each do |order|
+            - plan = Plan.find(order.plan_id)
+            - user = User.find(plan.user_id)
+            - menu = Menu.find(order.menu_id)
+            %tr
+              %td
+                = menu.name
+              %td
+                = user.name
+              %td
+                = user.full_address
+              %td
+                = order.delivery_range
+              %td
+                - if order.in_process?
+                  %button.btn.btn-warning 発送
+                - elsif order.dispatched?
+                  %button.btn.btn-warning.disabled 発送済み
+                - else
+                  %button.btn.btn-warning.disabled キャンセル

@@ -1,17 +1,20 @@
 class ShopsController < ApplicationController
-  
+
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   before_filter :shop_authorize, except: [:new, :create]
 
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all
+    @shop = Shop.find(session[:shop_id])
+    @orders = PlanMenu.where(shop_id: session[:shop_id], delivery_at: Time.now.all_day)
   end
 
   # GET /shops/1
   # GET /shops/1.json
   def show
+    @shop = Shop.find(session[:shop_id])
+    @orders = PlanMenu.where(shop_id: session[:shop_id], delivery_at: Time.now.all_day)
   end
 
   # GET /shops/new
