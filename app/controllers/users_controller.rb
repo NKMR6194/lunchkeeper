@@ -33,17 +33,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if find_position and @user.save
-        #redirect_to(:users, notice: 'User was successfully created')
-        format.html { redirect_to users_url, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if !guarantee then
+      render :action => 'new'
+    elsif !@user.save then
+      render :action => 'new'
+    else
+      @user = record
+      redirect_to user_path(@user.id), notice: 'Login successful'
     end
-
   end
 
   # PATCH/PUT /users/1
@@ -93,7 +90,7 @@ class UsersController < ApplicationController
         temp = JSON.parse(temp)
       end
 
-      if temp["results"].class == "Array" then
+      if temp["results"].class == "Array" or temp["results"].size == 0 then
         return false
       end
 
@@ -101,6 +98,24 @@ class UsersController < ApplicationController
       @user.position_y = temp["results"][0]["geometry"]["location"]["lng"].to_f
 
       return true
+    end
+
+    def guarantee
+      flag = true
+      puts @user.email
+      if @user.email == ""
+        @user.errors.add "email","please input email"
+        flag = false
+      end
+      if @user.password == ""
+        @user.errors.add "password","please input password"
+        flag = false
+      end
+      if !find_position
+        @user.errors.add "address","this address is wrong"
+        flag = false
+      end
+      return flag
     end
 
 end

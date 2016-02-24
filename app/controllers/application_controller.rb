@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  rescue_from ActionController::RoutingError, :with => :error_render_method
+
+  def error_render_method
+    redirect_to errors_can_not_find_path
+  end
+
   protect_from_forgery with: :exception
 
   private

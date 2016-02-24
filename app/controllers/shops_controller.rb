@@ -28,15 +28,15 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new(shop_params)
 
-    respond_to do |format|
-      if find_position and @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
-        format.json { render :show, status: :created, location: @shop }
-      else
-        format.html { render :new }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
-      end
+    if !guarantee then
+      render :action => 'new'
+    elsif !@shop.save then
+      render :action => 'new'
+    else
+      @user = record
+      redirect_to shop_path(@shop.id), notice: 'Login successful'
     end
+
   end
 
   # PATCH/PUT /shops/1
@@ -86,7 +86,7 @@ class ShopsController < ApplicationController
         temp = JSON.parse(temp)
       end
 
-      if temp["results"].class == "Array" then
+      if temp["results"].class == "Array" or temp["results"].size == 0 then
         return false
       end
 
@@ -94,5 +94,23 @@ class ShopsController < ApplicationController
       @shop.position_y = temp["results"][0]["geometry"]["location"]["lng"].to_f
 
       return true
+    end
+
+    def guarantee
+      flag = true
+      puts @shop.email
+      if @shop.email == ""
+        @shop.errors.add "email","please input email"
+        flag = false
+      end
+      if @shop.password == nil
+        @shop.errors.add "password","please input password"
+        flag = false
+      end
+      if !find_position
+        @shop.errors.add "address","this address is wrong"
+        flag = false
+      end
+      return flag
     end
 end

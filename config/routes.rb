@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get 'shop_login' => 'shop_sessions#new', :as => :shop_login
   post 'shop_logout' => 'shop_sessions#destroy', :as => :shop_logout
 
+  get 'errors/can_not_find'
+
+  match "*path", to: "errors#catch_404", via: :all
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
