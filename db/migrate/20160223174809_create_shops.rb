@@ -8,7 +8,7 @@ class CreateShops < ActiveRecord::Migration
       t.text :address
       t.string :pref
       t.string :city
-      t.integer :rang
+      t.integer :range
       t.integer :capability
       t.datetime :open_at
       t.datetime :close_at
