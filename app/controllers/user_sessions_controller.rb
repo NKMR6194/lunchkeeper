@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   def new
     @user = User.new
   end
- 
+
   def create
     @user = User.new
     record = User.find_by email: params[:user][:email]
@@ -22,11 +22,11 @@ class UserSessionsController < ApplicationController
       end
     end
   end
- 
+
   def destroy
     logout
     flash.clear
-    redirect_to welcome_path
+    redirect_to root_path
   end
 
   def welcome

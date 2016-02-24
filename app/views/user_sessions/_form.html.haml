@@ -1,0 +1,16 @@
+= form_for @user, :url => user_sessions_path do |f|
+  .field
+    = f.label :email
+    %br/
+    - if @user.errors.any?
+      = f.text_field :email, :placeholder => @user.errors[:email][0]
+    - else
+      = f.text_field :email, :placeholder => "name"
+  .field
+    = label_tag :password
+    %br/
+    - if @user.errors.any?
+      = f.password_field :password, :placeholder => @user.errors[:password][0]
+    - else
+      = f.password_field :password, :placeholder => "password"
+  = f.submit(:value => "Login")

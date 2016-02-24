@@ -8,7 +8,7 @@ one:
   address: MyText
   pref: MyString
   city: MyString
-  rang: 1
+  range: 1
   capability: 1
   open_at: 2016-02-23 23:50:34
   close_at: 2016-02-23 23:50:34
@@ -23,7 +23,7 @@ two:
   address: MyText
   pref: MyString
   city: MyString
-  rang: 1
+  range: 1
   capability: 1
   open_at: 2016-02-23 23:50:34
   close_at: 2016-02-23 23:50:34
