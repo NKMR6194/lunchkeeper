@@ -1,31 +1,21 @@
 class UserSessionsController < ApplicationController
-
-  before_filter :require_login, only: [:destroy]
+  skip_before_filter :require_login, only: [:new, :create]
 
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new
-    record = User.find_by email: params[:user][:email]
-    if record == nil then
-      @user.errors.add "email","this email is wrong"
-      render :action => 'new'
+    if @user = login(params[:email], params[:password])
+      redirect_back_or_to(plans_path, notice: "Login successful")
     else
-      if !record = login(params[:user][:email], params[:user][:password]) then
-        @user.errors.add "password","this password is wrong"
-        render :action => 'new'
-      else
-        @user = record
-        redirect_to user_path(@user.id), notice: 'Login successful'
-      end
+      flash.now[:alert] = "Login failed"
+      render action: "new"
     end
   end
 
   def destroy
     logout
-    flash.clear
     redirect_to root_path
   end
 

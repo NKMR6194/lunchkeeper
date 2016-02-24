@@ -5,6 +5,7 @@
         = link_to root_path, { class: "logo pull-left" } do
           = render "partials/logo"
         = link_to "マイページ", user_path(current_user), { class: "pull-right btn btn-default" }
+        = link_to "ログアウト", user_session_path(current_user), { method: :delete, class: "pull-right btn btn-danger margin-right" }
         .clearfix
         %h1.title 〇〇さんにお届けできるプラン一覧
         .plan
