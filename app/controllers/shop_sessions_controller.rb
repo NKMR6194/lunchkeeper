@@ -3,7 +3,7 @@ class ShopSessionsController < ApplicationController
   skip_before_filter :require_login
   before_filter :shop_authorize, only: [:destroy]
 
-  def new 
+  def new
     @shop = Shop.new
   end
 
@@ -28,7 +28,7 @@ class ShopSessionsController < ApplicationController
   def destroy
     session[:shop_id] = nil
     flash.clear
-    redirect_to shop_login_path
+    redirect_to new_shop_session_path
   end
 
 end

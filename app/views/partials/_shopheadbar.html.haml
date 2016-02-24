@@ -2,8 +2,6 @@
   - if session[:shop_id]
     = link_to "Edit Profile", edit_shop_path(session[:shop_id])
     |
-    \#{link_to "Logout", :shop_logout, method: :post}
+    = link_to "Logout", shop_session_path, method: :delete
   - else
-    = link_to "Register", new_shop_path
-    |
-    \#{link_to "Login", :shop_login}
+    = link_to "Login", new_shop_session_path
