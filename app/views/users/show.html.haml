@@ -7,13 +7,12 @@
           unch
           %span.logo__text--big<> k
           eeper
-        %a.pull-right.btn.btn-warning プラン一覧
+        = link_to "プラン一覧", plans_path, { class: "pull-right btn btn-warning" }
         .clearfix
         %h2
           ユーザープロフィール
           %small
-            %a(href="")
-              編集する
+            = link_to "編集する", edit_user_path(@user)
         .clearfix
         %table.table
           %tr
