@@ -2,11 +2,8 @@
   .container
     .row
       .col-xs-12
-        .logo
-          %span.logo__text--big<> L
-          unch
-          %span.logo__text--big<> k
-          eeper
+        = link_to root_path, { class: "logo" } do
+          = render "partials/logo"
         %h2 店舗プロフィール
         %table.table
           %tr

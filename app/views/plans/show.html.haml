@@ -2,11 +2,8 @@
   .container
     .row
       .col-xs-12
-        .logo.pull-left
-          %span.logo__text--big<> L
-          unch
-          %span.logo__text--big<> k
-          eeper
+        = link_to root_path, { class: "logo pull-left" } do
+          = render "partials/logo"
         %a.pull-right.btn.btn-default マイページ
         .clearfix
       .col-xs-12
