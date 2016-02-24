@@ -1,5 +1,4 @@
 class ShopsController < ApplicationController
-  
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   before_filter :shop_authorize, except: [:new, :create]
 

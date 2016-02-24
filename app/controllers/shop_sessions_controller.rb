@@ -1,8 +1,4 @@
 class ShopSessionsController < ApplicationController
-
-  skip_before_filter :require_login
-  before_filter :shop_authorize, only: [:destroy]
-
   def new
     @shop = Shop.new
   end
