@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'plans/index'
+
+  get 'plans/show'
+
   root 'welcome#index'
 
   resources :shops, only: [:show]
