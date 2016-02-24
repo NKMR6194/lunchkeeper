@@ -3,7 +3,7 @@ class CreatePlans < ActiveRecord::Migration
     create_table :plans do |t|
       t.integer :user_id
       t.integer :price
-      t.datetime :order_at
+      t.datetime :start_at
       t.datetime :delivery_at
       t.timestamps null: false
     end

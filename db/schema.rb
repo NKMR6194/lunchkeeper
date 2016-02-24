@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160224042258) do
   create_table "plans", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "price"
-    t.datetime "order_at"
+    t.datetime "start_at"
     t.datetime "delivery_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
