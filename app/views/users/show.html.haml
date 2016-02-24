@@ -1,28 +1,65 @@
-= render "partials/userheadbar"
-%p
-  %strong Email:
-  = @user.email
-%p
-  %strong Crypted password:
-  = @user.crypted_password
-%p
-  %strong Salt:
-  = @user.salt
-%p
-  %strong Name:
-  = @user.name
-%p
-  %strong Phone:
-  = @user.phone
-%p
-  %strong Address:
-  = @user.address
-%p
-  %strong Position x:
-  = @user.position_x
-%p
-  %strong Position y:
-  = @user.position_y
-= link_to 'Edit', edit_user_path(@user)
-|
-= link_to 'Back', users_path
+#user--show
+  .container
+    .row
+      .col-xs-12
+        .logo.pull-left
+          %span.logo__text--big<> L
+          unch
+          %span.logo__text--big<> k
+          eeper
+        %a.pull-right.btn.btn-warning プラン一覧
+        .clearfix
+        %h2
+          ユーザープロフィール
+          %small
+            %a(href="")
+              編集する
+        .clearfix
+        %table.table
+          %tr
+            %th 名前
+            %td(colspan="2") 山田　太郎
+          %tr
+            %th(rowspan="3") 住所
+            %td 県
+            %td XX
+          %tr
+            %td 市区町村
+            %td XX
+          %tr
+            %td その他
+            %td XX-X-X
+          %tr
+            %th 電話番号
+            %td(colspan="2") xxx-xxxx-xxx
+          %tr
+            %th Eメール
+            %td(colspan="2") xxx@xxxx.com
+        %h2 契約中の注文
+        %table.table
+          %tr
+            %th プラン
+            %th 期間
+            %th 配達時間
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00
+        %h2 過去の注文
+        %table.table
+          %tr
+            %th プラン
+            %th 期間
+            %th 配達時間
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00
