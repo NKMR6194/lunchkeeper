@@ -1,7 +1,7 @@
 module UsersHelper
-  # 経度
+  # 経度１度あたりの距離[km] 経度の距離変換用
   KM_PER_LAT = 91.18758845251963
-  # 緯度
+  # 緯度１度あたりの距離[km]
   KM_PER_LOT = 110.94625761306844
 
   def search_shops(user)
