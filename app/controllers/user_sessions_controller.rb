@@ -1,19 +1,34 @@
 class UserSessionsController < ApplicationController
-  skip_before_filter :require_login, except: [:destroy]
+
+  before_filter :require_login, only: [:destroy]
+
   def new
     @user = User.new
   end
  
   def create
-    if @user = login(params[:email], params[:password],false)
-      redirect_to edit_user_path(@user.id), notice: 'Login successful'
+    @user = User.new
+    record = User.find_by email: params[:user][:email]
+    if record == nil then
+      @user.errors.add "email","this email is wrong"
+      render :action => 'new'
     else
-      redirect_to login_path, notice: 'Login failed'
+      if !record = login(params[:user][:email], params[:user][:password]) then
+        @user.errors.add "password","this password is wrong"
+        render :action => 'new'
+      else
+        @user = record
+        redirect_to user_path(@user.id), notice: 'Login successful'
+      end
     end
   end
  
   def destroy
     logout
-    redirect_to(:users, notice: 'Logged out!')
+    flash.clear
+    redirect_to welcome_path
+  end
+
+  def welcome
   end
 end

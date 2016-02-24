@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  password_digest: MyString
+  name: MyString
+  phone: MyString
+  address: MyText
+  pref: MyString
+  city: MyString
+  rang: 1
+  capability: 1
+  open_at: 2016-02-23 23:50:34
+  close_at: 2016-02-23 23:50:34
+  position_x: 1.5
+  position_y: 1.5
+
+two:
+  email: MyString
+  password_digest: MyString
+  name: MyString
+  phone: MyString
+  address: MyText
+  pref: MyString
+  city: MyString
+  rang: 1
+  capability: 1
+  open_at: 2016-02-23 23:50:34
+  close_at: 2016-02-23 23:50:34
+  position_x: 1.5
+  position_y: 1.5

@@ -1,0 +1,69 @@
+<%= render "partials/shopheadbar" %>
+
+<p>
+  <strong>Email:</strong>
+  <%= @shop.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @shop.password_digest %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shop.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @shop.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @shop.address %>
+</p>
+
+<p>
+  <strong>Pref:</strong>
+  <%= @shop.pref %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @shop.city %>
+</p>
+
+<p>
+  <strong>Rang:</strong>
+  <%= @shop.rang %>
+</p>
+
+<p>
+  <strong>Capability:</strong>
+  <%= @shop.capability %>
+</p>
+
+<p>
+  <strong>Open at:</strong>
+  <%= @shop.open_at %>
+</p>
+
+<p>
+  <strong>Close at:</strong>
+  <%= @shop.close_at %>
+</p>
+
+<p>
+  <strong>Position x:</strong>
+  <%= @shop.position_x %>
+</p>
+
+<p>
+  <strong>Position y:</strong>
+  <%= @shop.position_y %>
+</p>
+
+<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<%= link_to 'Back', shops_path %>

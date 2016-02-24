@@ -1,4 +1,15 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@shop) do |f| %>
+  <% if @shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+      <ul>
+      <% @shop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :email %><br>
@@ -24,13 +35,29 @@
     <%= f.label :address %><br>
     <%= f.text_area :address %>
   </div>
-    <div class="field">
+  <div class="field">
     <%= f.label :pref %><br>
-    <%= f.text_area :pref %>
+    <%= f.text_field :pref %>
   </div>
-    <div class="field">
+  <div class="field">
     <%= f.label :city %><br>
-    <%= f.text_area :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :rang %><br>
+    <%= f.number_field :rang %>
+  </div>
+  <div class="field">
+    <%= f.label :capability %><br>
+    <%= f.number_field :capability %>
+  </div>
+  <div class="field">
+    <%= f.label :open_at %><br>
+    <%= f.datetime_select :open_at %>
+  </div>
+  <div class="field">
+    <%= f.label :close_at %><br>
+    <%= f.datetime_select :close_at %>
   </div>
   <div class="field">
     <%= f.label :position_x %><br>
@@ -44,17 +71,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-
-<script type="text/javascript">
-$(function() {
-  <% if @user.errors.any? %>
-      var s = "";
-      <% @user.errors.full_messages.each do |message| %>
-      s += "<%= message %> \n";
-      <% end %>
-      alert("<%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved: \n "+s);
-  <% end %>
-});
-</script>
-

@@ -1,7 +1,11 @@
+require 'rubygems'
+require "json"
+require 'unirest'
+
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :require_login, only: [:index, :new, :create]
+  before_filter :require_login, except: [:new, :create]
  
 
   # GET /users
@@ -39,6 +43,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /users/1
@@ -73,7 +78,22 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :name, :phone, :address, :position_x, :position_y)
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :phone, :address, :pref, :city, :position_x, :position_y)
+    end
+
+    def find_position
+      response = Unirest.get "http://maps.googleapis.com/maps/api/geocode/json?address=", headers:{"accept" => "application/json"}
+      temp = response.body
+      temp.force_encoding('ASCII-8BIT')
+      temp.gsub!(/\n/,'')
+      temp.gsub!(/\s/,'')
+      temp = JSON.parse(temp)
+
+      result = Array.new
+      temp["results"].each do |candidate|
+         result.insert(candidate["geometry"]["location"])
+      end
+
     end
 
 end

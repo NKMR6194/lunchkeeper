@@ -1,26 +1,29 @@
 Rails.application.routes.draw do
 
-  get 'user_sessions/new'
-  post 'user_sessions/create'
-  get 'user_sessions/destroy'
-
-
+  resources :shops
   resources :users
 
-=begin
-  get 'users' => 'users#index'
-  get 'users/index' => 'users#index'
-  get 'users/new' => 'users#new'
-  post 'users/create' => 'users#create'
-  post 'users' => 'users#create'
-  get 'users/edit' => 'users#edit'
+  #get 'user_sessions/new'
+  #post 'user_sessions/create'
+  #get 'user_sessions/destroy'
 
-  delete 'users' => 'users#destroy'
-=end
-  
+  #get 'shop_sessions/new'
+  #post 'shop_sessions/create'
+  #get 'shop_sessions/destroy'
+  resources :shop_sessions, only: [:new, :create, :destroy]
+  resources :user_sessions, only: [:new, :create, :destroy]
 
+
+  get 'welcome' => 'user_sessions#welcome', :as => :welcome
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
+
+
+  get 'shop_login' => 'shop_sessions#new', :as => :shop_login
+  post 'shop_logout' => 'shop_sessions#destroy', :as => :shop_logout
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
