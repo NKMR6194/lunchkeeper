@@ -1,6 +1,41 @@
-= render "partials/userheadbar"
-%h1 Editing User
-= render 'form'
-= link_to 'Show', @user
-|
-= link_to 'Back', users_path
+#user--edit
+  .container
+    .row
+      .col-xs-12
+        .logo
+          %span.logo__text--big<> L
+          unch
+          %span.logo__text--big<> k
+          eeper
+      .col-xs-12
+        .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+          .form-window
+            %h1.form-window__heading ユーザープロフィール編集
+            .form-window__body
+              %form.form-horizontal
+                .form-group
+                  %label.col-sm-3(for="name") 名前
+                  .col-sm-9.form-inline
+                    %input.form-control(type="text" val="山田　太郎")
+                .form-group
+                  %label.col-sm-3(for="phone") 住所
+                  .col-sm-9.form-inline
+                    .col-sm-4.address-label 県
+                    %input.col-sm-8.form-control(type="text" val="xxx-xxxx-xxx")
+                  .col-sm-9.col-sm-offset-3.form-inline
+                    .col-sm-4.address-label 市区町村
+                    %input.col-sm-8.form-control(type="text" val="xxx-xxxx-xxx")
+                  .col-sm-9.col-sm-offset-3.form-inline
+                    .col-sm-4.address-label その他
+                    %input.col-sm-8.form-control(type="text" val="xxx-xxxx-xxx")
+                .form-group
+                  %label.col-sm-3(for="phone") 電話番号
+                  .col-sm-9.form-inline
+                    %input.form-control(type="text" val="xxx-xxxx-xxx")
+                .form-group
+                  %label.col-sm-3(for="mail") Eメール
+                  .col-sm-9.form-inline
+                    %input.form-control(type="" val="xxx@xxxx.com")
+                %button.pull-right.btn.btn-default(type="submit") 保存
+                %button.pull-right.btn.btn-danger.cancel(type="submit") キャンセル
+                .clearfix
