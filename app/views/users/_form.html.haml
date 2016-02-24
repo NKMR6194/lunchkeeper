@@ -41,11 +41,8 @@
     = f.text_field :position_y
   .actions
     = f.submit
-:javascript
-  $(function() {
-  <haml_silent>   if @user.errors.any? 
-  </haml_silent><haml_block>      var s = "";
-  <haml_silent>       @user.errors.full_messages.each do |message| 
-  </haml_silent><haml_block>      s += "#{message} \n";
-  </haml_block>      alert("#{pluralize(@user.errors.count, "error")} prohibited this user from being saved: \n "+s);
-  </haml_block>});
+
+- if @user.errors.any?
+  - error_messages = @user.errors.full_messages.join(" \n")
+  :javascript
+    alert("#{pluralize(@user.errors.count, "error")} prohibited this user from being saved: \n " + #{error_messages});
