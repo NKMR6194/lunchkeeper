@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :shops
   devise_for :users
 
-  resources :shops, only: [:show]
-  resources :users, only: [:show, :edit, :update]
+  resource :shop, only: [:show]
+  resource :user, only: [:show, :edit, :update]
   resources :plans, only: [:index, :show]
   resources :orders, only: [:update]
 

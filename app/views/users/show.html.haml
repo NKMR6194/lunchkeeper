@@ -10,28 +10,28 @@
         %h2
           ユーザープロフィール
           %small.edit-link
-            = link_to "編集する", edit_user_path(current_user)
+            = link_to "編集する", edit_user_path
         .clearfix
         %table.table
           %tr
             %th 名前
-            %td(colspan="2")= current_user.name
+            %td(colspan="2")= @user.name
           %tr
             %th(rowspan="3") 住所
             %td 県
-            %td= current_user.pref
+            %td= @user.pref
           %tr
             %td 市区町村
-            %td= current_user.city
+            %td= @user.city
           %tr
             %td その他
-            %td= current_user.address
+            %td= @user.address
           %tr
             %th 電話番号
-            %td(colspan="2")= current_user.phone
+            %td(colspan="2")= @user.phone
           %tr
             %th Eメール
-            %td(colspan="2")= current_user.email
+            %td(colspan="2")= @user.email
         %h2 契約中の注文
         %table.table
           %tr
