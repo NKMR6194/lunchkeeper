@@ -32,16 +32,6 @@ ActiveRecord::Schema.define(version: 20160224153658) do
     t.datetime "updated_at",                        null: false
   end
 
-  create_table "plan_menus", force: :cascade do |t|
-    t.integer  "menu_id"
-    t.integer  "plan_id"
-    t.integer  "shop_id"
-    t.integer  "state"
-    t.datetime "delivery_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "plan_shops", force: :cascade do |t|
     t.integer  "shop_id"
     t.integer  "plan_id"
