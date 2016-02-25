@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_shop!
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user
 
   def show
     @active_plan = Plan.find_by(user_id: @user.id, state: :contracting)
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to user_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
