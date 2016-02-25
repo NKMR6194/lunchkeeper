@@ -22,7 +22,7 @@ module Position
     temp = JSON.parse(temp)
 
     lat = temp["results"][0]["geometry"]["location"]["lat"].to_f
-    lot = temp["results"][0]["geometry"]["location"]["lng"].to_f
-    return lat, lot
+    lng = temp["results"][0]["geometry"]["location"]["lng"].to_f
+    return lat, lng
   end
 end
