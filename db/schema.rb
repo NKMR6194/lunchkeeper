@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224120128) do
+ActiveRecord::Schema.define(version: 20160224153658) do
 
   create_table "menus", force: :cascade do |t|
     t.integer  "shop_id"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20160224120128) do
     t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "shop_id"
+    t.integer  "menu_id"
+    t.datetime "delivery_at"
+    t.integer  "state",       limit: 1, default: 0, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "plan_menus", force: :cascade do |t|
@@ -56,6 +66,8 @@ ActiveRecord::Schema.define(version: 20160224120128) do
     t.string   "city"
     t.integer  "range"
     t.integer  "capability"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "open_at"
     t.datetime "close_at"
     t.datetime "created_at",                          null: false
@@ -93,6 +105,8 @@ ActiveRecord::Schema.define(version: 20160224120128) do
     t.string   "pref"
     t.string   "city"
     t.text     "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
