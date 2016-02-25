@@ -63,11 +63,12 @@ shops.elements.each("Results/Shop") do |s|
 end
 
 10.times do |j|
-  delivery_at =  "#{Random.new.rand(10) + 4}:00"
+  delivery_at =  "#{Random.new.rand(4) + 10}:00"
+  start_at = Time.zone.now
   plan = Plan.new({
     user_id: user.id,
-    start_at: Time.zone.now.beginning_of_day,
-    end_at: Time.zone.now.advance(days: 5).beginning_of_day,
+    start_at: start_at.beginning_of_day,
+    end_at: start_at.advance(days: 5).beginning_of_day,
     delivery_at: delivery_at
   })
   plan.done! unless j == 0
@@ -78,7 +79,7 @@ end
       user_id: user.id,
       menu_id: menu.id,
       shop_id: menu.shop.id,
-      delivery_at: delivery_at
+      delivery_at: Time.zone.parse("#{(start_at + k.days).strftime("%Y/%m/%d")} #{delivery_at}")
     })
     price += menu.price
   end
