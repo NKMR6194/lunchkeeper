@@ -59,7 +59,7 @@
                   - if order.delivered?
                     %button.btn.btn-warning.disabled 発送済み
                   - else
-                    = link_to "発送", order_path, { method: :put, class: "btn btn-warning" }
+                    = link_to "発送", order_path(order.id), { method: :put, class: "btn btn-warning" }
           - else
             %tr
               %td(colspan="5") 本日の注文はありません
