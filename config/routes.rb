@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  devise_for :shops
+  devise_for :users
 
   resources :shops, only: [:show]
-  resources :users, only: [:new, :create, :show, :edit, :update]
-
-  resources :shop_sessions, only: [:new, :create, :destroy]
-  resources :user_sessions, only: [:new, :create, :destroy]
-
+  resources :users, only: [:show, :edit, :update]
   resources :plans, only: [:index, :show]
+
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

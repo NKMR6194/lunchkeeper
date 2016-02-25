@@ -1,2 +1,98 @@
-%h1 Plans#show
-%p Find me in app/views/plans/show.html.erb
+#plan--show
+  .container
+    .row
+      .col-xs-12
+        = link_to root_path, { class: "logo pull-left" } do
+          = render "partials/logo"
+        %a.pull-right.btn.btn-default マイページ
+        .clearfix
+      .col-xs-12
+        %h1.title 5日間　2000円プラン
+      .col-xs-12
+        .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+          .form-window
+            %h1.form-window__heading 注文書
+            .form-window__body
+              .note
+                下記の商品のうち5品が指定時間に出前されます
+              %form.form-horizontal
+                .form-group
+                  %label.col-sm-3(for="start_at") 配達日
+                  .col-sm-9.form-inline
+                    %select.form-control
+                      %option(val="02-22") 2月22日
+                      %option(val="02-23") 2月23日
+                      %option(val="02-24") 2月24日
+                      %option(val="02-25") 2月25日
+                      %option(val="02-26") 2月26日
+                    %span から5日間
+                .form-group
+                  %label.col-sm-3(for="delivery_at") 配達時間
+                  .col-sm-9.form-inline
+                    %span 毎日
+                    %select.form-control
+                      %option(val="10:00") 10:00 〜 11:00
+                      %option(val="11:00") 11:00 〜 12:00
+                      %option(val="12:00") 12:00 〜 13:00
+                      %option(val="13:00") 13:00 〜 14:00
+                      %option(val="14:00") 14:00 〜 15:00
+                    %span にお届け
+                %button.pull-right.btn.btn-default(type="submit") 注文確定
+                .clearfix
+      .col-xs-12.shop
+        %h2.shop__title ABCバーガー
+        .row
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food1.jpg")
+            .text-center ハンバーグ定食
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food2.jpg")
+            .text-center 醤油ラーメン
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food3.jpg")
+            .text-center うにいくら丼
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food4.jpg")
+            .text-center ワッフル
+            .text-center 単価400円
+      .col-xs-12.shop
+        %h2.shop__title DEFラーメン
+        .row
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food1.jpg")
+            .text-center ハンバーグ定食
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food2.jpg")
+            .text-center 醤油ラーメン
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food3.jpg")
+            .text-center うにいくら丼
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food4.jpg")
+            .text-center ワッフル
+            .text-center 単価400円
+      .col-xs-12.shop
+        %h2.shop__title 海鮮GHI
+        .row
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food1.jpg")
+            .text-center ハンバーグ定食
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food2.jpg")
+            .text-center 醤油ラーメン
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food3.jpg")
+            .text-center うにいくら丼
+            .text-center 単価400円
+          .shop__menu.col-xs-6.col-md-3
+            %img.menu__image(src="food4.jpg")
+            .text-center ワッフル
+            .text-center 単価400円

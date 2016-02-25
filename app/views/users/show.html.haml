@@ -1,28 +1,62 @@
-= render "partials/userheadbar"
-%p
-  %strong Email:
-  = @user.email
-%p
-  %strong Crypted password:
-  = @user.crypted_password
-%p
-  %strong Salt:
-  = @user.salt
-%p
-  %strong Name:
-  = @user.name
-%p
-  %strong Phone:
-  = @user.phone
-%p
-  %strong Address:
-  = @user.address
-%p
-  %strong Position x:
-  = @user.position_x
-%p
-  %strong Position y:
-  = @user.position_y
-= link_to 'Edit', edit_user_path(@user)
-|
-= link_to 'Back', users_path
+#user--show
+  .container
+    .row
+      .col-xs-12
+        = link_to root_path, { class: "logo pull-left" } do
+          = render "partials/logo"
+        = link_to "プラン一覧", plans_path, { class: "pull-right btn btn-warning" }
+        = link_to "ログアウト", destroy_user_session_path, { method: :delete, class: "pull-right btn btn-danger margin-right" }
+        .clearfix
+        %h2
+          ユーザープロフィール
+          %small.edit-link
+            = link_to "編集する", edit_user_path(current_user)
+        .clearfix
+        %table.table
+          %tr
+            %th 名前
+            %td(colspan="2")= current_user.name
+          %tr
+            %th(rowspan="3") 住所
+            %td 県
+            %td= current_user.pref
+          %tr
+            %td 市区町村
+            %td= current_user.city
+          %tr
+            %td その他
+            %td= current_user.address
+          %tr
+            %th 電話番号
+            %td(colspan="2")= current_user.phone
+          %tr
+            %th Eメール
+            %td(colspan="2")= current_user.email
+        %h2 契約中の注文
+        %table.table
+          %tr
+            %th プラン
+            %th 期間
+            %th 配達時間
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00
+        %h2 過去の注文
+        %table.table
+          %tr
+            %th プラン
+            %th 期間
+            %th 配達時間
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00
+          %tr
+            %td 5日間 2000円プラン
+            %td 2016年2月22日 〜 2016年2月26日
+            %td 11:00 〜 12:00

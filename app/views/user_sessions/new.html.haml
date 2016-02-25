@@ -1,9 +1,0 @@
-= render "partials/userheadbar"
-%h1 Login
-= render 'form'
-= link_to 'Back', root_path
-:javascript
-  $(function() {
-  <haml_silent>	 if flash[:notice]
-  </haml_silent><haml_block>	    alert("#{flash[:notice]}");
-  </haml_block>});

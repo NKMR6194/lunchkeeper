@@ -7,9 +7,6 @@
           = link_to "ログイン", new_user_session_path, { class: "header__user-login" }
         .clearfix
         .logo
-          %span.logo__text--big<> L
-          unch
-          %span.logo__text--big<> k
-          eeper
+          = render "partials/logo"
         .registration
-          = link_to "新規ユーザー登録", new_user_path, { class: "btn btn-warning", role: "button" }
+          = link_to "新規ユーザー登録", new_user_registration_path, { class: "btn btn-warning", role: "button" }
