@@ -43,9 +43,11 @@ ActiveRecord::Schema.define(version: 20160224153658) do
     t.integer  "user_id"
     t.integer  "price"
     t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "delivery_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "state",       limit: 1, default: 0, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "shops", force: :cascade do |t|
