@@ -38,25 +38,26 @@
             %th プラン
             %th 期間
             %th 配達時間
-          %tr
-            %td 5日間 2000円プラン
-            %td 2016年2月22日 〜 2016年2月26日
-            %td 11:00 〜 12:00
+          - if @active_plan
+            %tr
+              %td= "#{contract_days(@active_plan)}日間 #{@active_plan.price}円プラン"
+              %td= contract_period(@active_plan)
+              %td= delivery_time(@active_plan)
+          - else
+            %tr
+              %td(colspan="3") 現在契約はしていません
         %h2 過去の注文
         %table.table
           %tr
             %th プラン
             %th 期間
             %th 配達時間
-          %tr
-            %td 5日間 2000円プラン
-            %td 2016年2月22日 〜 2016年2月26日
-            %td 11:00 〜 12:00
-          %tr
-            %td 5日間 2000円プラン
-            %td 2016年2月22日 〜 2016年2月26日
-            %td 11:00 〜 12:00
-          %tr
-            %td 5日間 2000円プラン
-            %td 2016年2月22日 〜 2016年2月26日
-            %td 11:00 〜 12:00
+          - if @old_plans.any?
+            - @old_plans.each do |plan|
+              %tr
+                %td= "#{contract_days(plan)}日間 #{plan.price}円プラン"
+                %td= contract_period(plan)
+                %td= delivery_time(plan)
+          - else
+            %tr
+              %td(colspan="3") 過去の注文はありません
