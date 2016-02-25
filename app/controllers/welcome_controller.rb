@@ -4,6 +4,6 @@ class WelcomeController < ApplicationController
 
   def index
     redirect_to plans_path if user_signed_in?
-    redirect_to shop_path if shop_signed_in?
+    redirect_to shop_path  if shop_signed_in?
   end
 end
