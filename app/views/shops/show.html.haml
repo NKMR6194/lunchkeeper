@@ -10,26 +10,36 @@
         %table.table
           %tr
             %th 名前
-            %td(colspan="2") ABCバーガー
+            %td(colspan="2")= @shop.name
           %tr
             %th(rowspan="3") 住所
             %td 県
-            %td XX
+            %td= @shop.pref
           %tr
             %td 市区町村
-            %td XX
+            %td= @shop.city
           %tr
             %td その他
-            %td XX-X-X
+            %td= @shop.address
           %tr
             %th 電話番号
-            %td(colspan="2") xxx-xxxx-xxx
+            %td(colspan="2")= @shop.phone
           %tr
             %th Eメール
-            %td(colspan="2") xxx@xxxx.com
+            %td(colspan="2")= @shop.email
           %tr
             %th 営業時間
-            %td(colspan="2") xx:xx 〜 xx:xx
+            %td(colspan="2")= operation_time(@shop)
+        %h2 メニュー
+        %table.table
+          - @shop.menus.each_slice(4) do |ms|
+            %tr
+              - ms.each do |menu|
+                %td.menu
+                  .menu__image
+                    = image_tag menu.image_url, class: "menu__image"
+                  .menu__name= menu.name
+                  .menu__price= "#{menu.price}円"
         %h2 本日の注文
         %table.table
           %tr
@@ -38,24 +48,18 @@
             %th 住所
             %th 配達時間
             %th 状態
-          %tr
-            %td Aセット
-            %td 山田　太郎
-            %td 〇〇県〇〇町1-2-4-5
-            %td 11:00 〜 12:00
-            %td
-              %button.btn.btn-warning.disabled 発送済み
-          %tr
-            %td Aセット
-            %td 山田　太郎
-            %td 〇〇県〇〇町1-2-4-5
-            %td 11:00 〜 12:00
-            %td
-              %button.btn.btn-warning 発送
-          %tr
-            %td Aセット
-            %td 山田　太郎
-            %td 〇〇県〇〇町1-2-4-5
-            %td 11:00 〜 12:00
-            %td
-              %button.btn.btn-warning 発送
+          - if @today_orders.any?
+            - @today_orders.each do |order|
+              %tr
+                %td= order.menu.name
+                %td= order.user.name
+                %td= full_address(order.user)
+                %td= delivery_time(order)
+                %td
+                  - if order.delivered?
+                    %button.btn.btn-warning.disabled 発送済み
+                  - else
+                    = link_to "発送", order_path, { method: :put, class: "btn btn-warning" }
+          - else
+            %tr
+              %td(colspan="5") 本日の注文はありません

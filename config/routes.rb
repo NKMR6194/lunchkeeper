@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :shops, only: [:show]
   resources :users, only: [:show, :edit, :update]
   resources :plans, only: [:index, :show]
+  resources :orders, only: [:update]
 
   root 'welcome#index'
 

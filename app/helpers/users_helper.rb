@@ -12,4 +12,8 @@ module UsersHelper
       shop.range * shop.range >= x_diff * x_diff + y_diff * y_diff
     end
   end
+
+  def full_address user
+    user.pref + user.city + user.address
+  end
 end
