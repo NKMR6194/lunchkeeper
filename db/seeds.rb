@@ -61,5 +61,3 @@ shops.elements.each("Results/Shop") do |s|
   shop.menus.build menus
   shop.save!
 end
-
->>>>>>> fcdd7ae... make user shop menu seeds
