@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160224153658) do
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "shop_id"
+    t.integer  "plan_id"
     t.integer  "menu_id"
     t.datetime "delivery_at"
     t.integer  "state",       limit: 1, default: 0, null: false

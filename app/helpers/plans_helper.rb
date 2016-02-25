@@ -1,6 +1,6 @@
 module PlansHelper
   def contract_period plan
-    "#{plan.start_at.strf('%Y/%m/%d')} 〜 #{plan.start_at.strf('%Y/%m/%d')}"
+    "#{plan.start_at.strftime('%Y/%m/%d')} 〜 #{plan.end_at.strftime('%Y/%m/%d')}"
   end
 
   def contract_days plan

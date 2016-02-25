@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @active_plan = Plan.find_by(user_id: @user.id, state: :contracting)
-    @old_plans   = Plan.where(user_id: @user.id, state: :done).limit(10)
+    @active_plan = Plan.find_by(user_id: @user.id, state: Plan.states[:contracting])
+    @old_plans   = Plan.where(user_id: @user.id, state: Plan.states[:done]).limit(10)
   end
 
   def edit

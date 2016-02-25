@@ -61,3 +61,27 @@ shops.elements.each("Results/Shop") do |s|
   shop.menus.build menus
   shop.save!
 end
+
+10.times do |j|
+  delivery_at =  "#{Random.new.rand(10) + 4}:00"
+  plan = Plan.new({
+    user_id: user.id,
+    start_at: Time.zone.now.beginning_of_day,
+    end_at: Time.zone.now.advance(days: 5).beginning_of_day,
+    delivery_at: delivery_at
+  })
+  plan.done! unless j == 0
+  price = 0
+  5.times do |k|
+    menu = Menu.find(Menu.pluck(:id).sample)
+    plan.orders.build({
+      user_id: user.id,
+      menu_id: menu.id,
+      shop_id: menu.shop.id,
+      delivery_at: delivery_at
+    })
+    price += menu.price
+  end
+  plan.assign_attributes(price: price)
+  plan.save!
+end
