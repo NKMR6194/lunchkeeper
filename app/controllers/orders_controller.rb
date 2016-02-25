@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_shop!
+  skip_before_action :authenticate_user!
 
   def update
     @order = Order.find(params[:id])
     respond_to do |format|
       if @order.delivered!
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to shop_path, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
