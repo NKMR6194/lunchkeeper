@@ -23,9 +23,9 @@ shops.elements.each("Results/Shop") do |s|
   shop.assign_attributes({
     name: s.elements["ShopName"].text,
     phone: "000-0000-000",
-    pref: pref
-    city: city
-    address: address
+    pref: pref,
+    city: city,
+    address: address,
     open_at: "#{Random.new.rand(6) + 6}:00",
     close_at: "#{Random.new.rand(7) + 17}:00"
   })
