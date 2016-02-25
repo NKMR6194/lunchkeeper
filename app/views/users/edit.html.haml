@@ -9,7 +9,7 @@
           .form-window
             %h1.form-window__heading ユーザープロフィール編集
             .form-window__body
-              = form_for(@user, html: { class: "form-horizontal" }) do |f|
+              = form_for(@user, url: user_path, html: { class: "form-horizontal" }) do |f|
                 .form-group
                   = f.label :name, { class: "col-sm-3" }
                   .col-sm-9.form-inline
