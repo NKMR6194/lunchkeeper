@@ -1,29 +1,63 @@
-Shop.create!([
-  {email: "2347189@gmail.com", password_digest: "$2a$10$Ici1c8cubZBXLaaTPW7kc.W5wFYar9IGUxHFJ.ycddeqMQUokJpCO", name: "fugu", phone: "08037548228", address: " Nihonbashi", pref: "Tokyo", city: "Chuoku", range: 1, capability: 10, open_at: nil, close_at: nil, position_x: 35.680814, position_y: 139.771589},
-  {email: "23471534@gmail.com", password_digest: "$2a$10$uc.PYrTeFK1QVpL.z95kL.3Um34gNgWN6hvhQ0qVp6C.0jEb/qJBe", name: "swanlake", phone: "08052996155", address: "Yaesu", pref: "Tokyo", city: "Chuoku", range: 2, capability: 15, open_at: nil, close_at: nil, position_x: 35.677828, position_y: 139.768515},
-  {email: "108023@gmail.com", password_digest: "$2a$10$acD38WFcQmbV/j22XN1oK.ZCRR85upR8F1zRHDWUUzsa22p7zqy6.", name: "uotake", phone: "08035410168", address: "Tsukiji", pref: "Tokyo", city: "Chuoku", range: 1, capability: 5, open_at: nil, close_at: nil, position_x: 35.669444, position_y: 139.77167},
-  {email: "0682393@gmail.com", password_digest: "$2a$10$CgdE104q5J4FwxQ4.1ULyu1rM1BkR3ku2O6XH6DYArKuEIQVeaU16", name: "tsukiji", phone: "08035790495", address: "Akashicho", pref: "Tokyo", city: "Chuoku", range: 2, capability: 25, open_at: nil, close_at: nil, position_x: 35.665049, position_y: 139.777231},
-  {email: "573497230@gmail.com", password_digest: "$2a$10$bhOMAJzSSkQxBAGm1jfieuUlGPPZ/duFHr297Q1vwaOQeWfN40lxq", name: "oedo", phone: "0803985022", address: "Chikuji", pref: "Tokyo", city: "Chuoku", range: 1, capability: 30, open_at: nil, close_at: nil, position_x: 35.663504, position_y: 139.769283},
-  {email: "573443230@gmail.com", password_digest: "$2a$10$X1q9JBsYxdzlIU/.LLjVaecB8SiS3gKGJywoB2W2uoBwH4lvNmaRS", name: "xiliu", phone: "08035537738", address: "Higashishinbashi", pref: "Tokyo", city: "Minatoku", range: 2, capability: 10, open_at: nil, close_at: nil, position_x: 35.665537, position_y: 139.761105},
-  {email: "2345230@gmail.com", password_digest: "$2a$10$dsJlrFWHu27lVQvdnlWWV.Oyou/4RXgM9xxhFy3Ph9aCm76VzycqS", name: "matsu", phone: "08055475470", address: "Kachidoki", pref: "Tokyo", city: "Chuoku", range: 3, capability: 20, open_at: nil, close_at: nil, position_x: 35.65865, position_y: 139.777993},
-  {email: "2345346@gmail.com", password_digest: "$2a$10$XsB7s8ttsr6BKO1ENprcz.18b0Jiyiy//AtWLGIhHbTLQ7ikOPSoW", name: "suta", phone: "08092123456", address: "ginza", pref: "Tokyo", city: "Chuoku", range: 1, capability: 5, open_at: nil, close_at: nil, position_x: 35.672084, position_y: 139.767486},
-  {email: "2353432907df@gmail.com", password_digest: "$2a$10$Qk109d2k56sSvsaULAlMQuSj3pAGom7gSC6kpTnNnA/t.k.hK8uby", name: "sutaiu", phone: "08069043700", address: "Kyobashi", pref: "Tokyo", city: "Chuoku", range: 2, capability: 10, open_at: nil, close_at: nil, position_x: 35.675309, position_y: 139.768223},
-  {email: "3489hdljdl@gmail.com", password_digest: "$2a$10$.G21j0K4VM7ecNBNEkowoOJ31KWWWViSLn89jCIHVNmj.kTUQAL9i", name: "kissa", phone: "08003622647", address: "Ginza", pref: "Tokyo", city: "Chuoku", range: 3, capability: 10, open_at: nil, close_at: nil, position_x: 35.669434, position_y: 139.768678},
-  {email: "42390df90h@gmail.com", password_digest: "$2a$10$X2Vu0mx.l0ZEyFF7O0t/gev.eiHKp9Zsv.qu23YHpKgqta3mun/LK", name: "mikado", phone: "08032410549", address: "Nihonbashimuromachi", pref: "Tokyo", city: "Chuoku", range: 4, capability: 5, open_at: nil, close_at: nil, position_x: 35.685468, position_y: 139.774893},
-  {email: "3y90hdfs0@gmail.com", password_digest: "$2a$10$DYAihMRGrT05jI6LGytDxuhJv3kACFsiRHw1CJvcBdHe/byzcJaHi", name: "toraji", phone: "08039485022", address: "Kyobashi", pref: "Tokyo", city: "Chuoku", range: 2, capability: 20, open_at: nil, close_at: nil, position_x: 35.676173, position_y: 139.768932},
-  {email: "4535634v40@gmail.com", password_digest: "$2a$10$1Acwc4ZY2yPSLlfWEhkyWuDwvWpRpQpGsSam5xSloS2KgKdmrZ46W", name: "toraji", phone: "08035931212", address: "Nishishinbashi", pref: "Tokyo", city: "Minatoku", range: 3, capability: 20, open_at: nil, close_at: nil, position_x: 35.668935, position_y: 139.752907},
-  {email: "43203r034@gmail.com", password_digest: "$2a$10$f0HZ3hqY.XZrqBWognSnfeiDHF/2UmAvYbRWUo4yEdGx3xY/J5cka", name: "kikunoi", phone: "08039845029", address: "Akasaka", pref: "Tokyo", city: "Minatoku", range: 3, capability: 20, open_at: nil, close_at: nil, position_x: 35.669932, position_y: 139.734123},
-  {email: "43790573@gmail.com", password_digest: "$2a$10$CyY1ulpthjOL7vsLVSLvNuGaw7fkmkzRvISka1mU4OlHf154UuerC", name: "saito", phone: "08090482904", address: "ARK Hills", pref: "Tokyo", city: "Minatoku", range: 6, capability: 25, open_at: nil, close_at: nil, position_x: 35.665192, position_y: 139.739482},
-  {email: "4573490@gmail.com", password_digest: "$2a$10$ZwN4YrPty.Daqg0zym8p6O.0stAwMHVZ4AD5XVwoJ75MZZ2j/S5MC", name: "kyoure", phone: "08004933345", address: "Toranomon", pref: "Tokyo", city: "Minatoku", range: 2, capability: 14, open_at: nil, close_at: nil, position_x: 35.664116, position_y: 139.746493},
-  {email: "4573543890@gmail.com", password_digest: "$2a$10$YshJ7I1wmItI9792rSONNe6TOL3Cd8JaUVyhD4cn5DtTTEwwS9Trm", name: "beauty", phone: "0805456340", address: "Shinbashi", pref: "Tokyo", city: "Minatoku", range: 1, capability: 10, open_at: nil, close_at: nil, position_x: 35.663346, position_y: 139.755937},
-  {email: "539834@gmail.com", password_digest: "$2a$10$vlYskhyShWkD0NzA.VlD0ugvJskrlSe7zIbadXzoL4e8ly/mCQ0c6", name: "beauty", phone: "08024734973", address: "Akasaka", pref: "Tokyo", city: "Minatoku", range: 2, capability: 15, open_at: nil, close_at: nil, position_x: 35.669265, position_y: 139.738624},
-  {email: "5354645@gmail.com", password_digest: "$2a$10$AjgjnwDRWveJ2jdzlH//qe4JykYcwcaBgzWRt2w2skjZE6vJTxCc.", name: "bui", phone: "08048884923", address: "Shibadaimon", pref: "Tokyo", city: "Minatoku", range: 2, capability: 10, open_at: nil, close_at: nil, position_x: 35.658166, position_y: 139.754083},
-  {email: "553498523@gmail.com", password_digest: "$2a$10$5y9Vxj7pIVB8C.QP40ZsPOsAdshVtcK2Q27FYrb.EPGIukMw6guku", name: "tarisu", phone: "08054082828", address: "Toranomon", pref: "Tokyo", city: "Minatoku", range: 4, capability: 20, open_at: nil, close_at: nil, position_x: 35.665108, position_y: 139.743864}
-])
-User.create!([
-  {email: "319621@gmail.com", crypted_password: "$2a$10$mk6qkLDXEKtpGf8MUVuwde9NIcDyIus820REAiFQvIeFck8vD/IRe", salt: "1zqBMDpLegnRLtTky4Js", name: "Amsa", phone: "08074252392", address: "Yaesu", position_x: 35.6817241, position_y: 139.7699945, pref: "Tokyo", city: "Chuoku"},
-  {email: "221689@gmail.com", crypted_password: "$2a$10$/XTEYJSYL5IOUCOhBZ2TdOK6dQMYtBTWIsuTT/eNVZPfyKtsxzO7S", salt: "qWN5WEVx1cQ5CM3asRBX", name: "Mishi", phone: "08083938959", address: "Kyobashi", position_x: 35.6762415, position_y: 139.7706974, pref: "Tokyo", city: "Chuoku"},
-  {email: "333444@gmail.com", crypted_password: "$2a$10$xizWIiEC9ya5Gzksz0icLuVLXjWdfFNKHWs9CLoWWm/S00HN60jpm", salt: "bjx2ay4z4maxfk8dsQCh", name: "Siki", phone: "08038929846", address: "Ginza", position_x: 35.6720892, position_y: 139.770592, pref: "Tokyo", city: "Chuoku"},
-  {email: "532564@gmail.com", crypted_password: "$2a$10$GEOQcDIsTVPTPbcVvaaWee1E1090Wvaxnthf2cseiYZaIJHb9YFAm", salt: "qqepehSqMxuziyPdqtsG", name: "asake", phone: "08039599928", address: "Shinbashi", position_x: 35.6664505, position_y: 139.756065, pref: "Tokyo", city: "Minatoku"},
-  {email: "123456@gmail.com", crypted_password: "$2a$10$5BHDEggyzWZhR2UerXyWqO96qSd6Glqj/IKLObv7.ok6aTKQoCKzm", salt: "Yy4BrrvGgUnqa8DbD11D", name: "sayak", phone: "08094368145", address: "Akasaka", position_x: 35.6756766, position_y: 139.7360861, pref: "Tokyo", city: "Minatoku"}
-])
+require "rexml/document"
+
+i = 0
+user = User.new(email: "#{i}@mail.com", password: "password")
+i += 1
+user.assign_attributes({
+  name: "山田太郎",
+  phone: "000-0000-000",
+  pref: "東京都",
+  city: "千代田区",
+  address: "丸の内1-9-2"
+})
+user.save!
+
+f = File.open(File.join(Rails.root, "db", "shops.xml"))
+shops = REXML::Document.new(f)
+
+shops.elements.each("Results/Shop") do |s|
+  shop = Shop.new(email: "#{i}@mail.com", password: "password")
+  i += 1
+  full_address = s.elements["ShopAddress"].text
+  pref, city, address = /^(.+?[都道府県])(.+?[市区町村])(.*)$/.match(full_address)
+  shop.assign_attributes({
+    name: s.elements["ShopName"].text,
+    phone: "000-0000-000",
+    pref: s.elements["LargeAreaName"].text,
+    city: s.elements["MiddleAreaName"].text,
+    address: s.elements["SmallAreaName"].text,
+    open_at: "#{Random.new.rand(6) + 6}:00",
+    close_at: "#{Random.new.rand(7) + 17}:00"
+  })
+  # 店に10品の食品、店の価格グレードを4種類想定
+  # 0. 低価格店 200-700円
+  # 1. 中価格店 600-1100円
+  # 2. 高価格店 1000-1500円
+  # 3. 全てを含んだ店 200-1500円
+  shop_grade = Random.new.rand(4)
+  menus = []
+  10.times do |j|
+    case shop_grade
+    when 0
+      name = "低価格セット #{j}"
+      price = (Random.new.rand(51) + 20) * 10
+    when 1
+      name = "中価格セット #{j}"
+      price = (Random.new.rand(51) + 60) * 10
+    when 2
+      name = "高価格セット #{j}"
+      price = (Random.new.rand(51) + 100) * 10
+    when 3
+      name = "セット #{j}"
+      price = (Random.new.rand(131) + 20) * 10
+    end
+    menu = {
+      name: name,
+      price: price,
+      image_url: "foods/#{Random.new.rand(4)}.jpg"
+    }
+    menus.push(menu)
+  end
+  shop.menus.build menus
+  shop.save!
+end
