@@ -5,7 +5,7 @@ class PlansController < ApplicationController
 
   def new
     @isContracting = false
-    if Plan.where(user_id: current_user.id, state: Plan.states[:contracting])
+    if Plan.contracting.where(user_id: current_user.id).present?
       @isContracting = true
       @plans = []
     else
