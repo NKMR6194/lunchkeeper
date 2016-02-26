@@ -17,8 +17,7 @@ class UsersController < ApplicationController
       address = user_params[:pref] + user_params[:city] + user_params[:address]
       lat, lng = find_position(address)
       @user.assign_attributes(user_params)
-      @user.assign_attributes(latitude: lat, longitude: lng)
-      if @user.update
+      if @user.update(latitude: lat, longitude: lng)
         format.html { redirect_to user_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
