@@ -2,9 +2,9 @@ class PlansController < ApplicationController
   include PlanGenerator
   skip_before_action :authenticate_shop!
 
-  def index
+  def new
   end
 
-  def show
+  def create
   end
 end
