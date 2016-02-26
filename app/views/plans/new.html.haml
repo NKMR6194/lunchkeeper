@@ -1,0 +1,72 @@
+#plan--index
+  .container
+    .row
+      .col-xs-12
+        = link_to root_path, { class: "logo pull-left" } do
+          = render "partials/logo"
+        = link_to "マイページ", user_path, { class: "pull-right btn btn-default" }
+        .clearfix
+        %h1.title= "#{current_user.name}さんにお届けできるプラン一覧"
+        - if @isContracting
+          = link_to "現在契約中です。契約を確認する", user_path
+        - else
+          - if @plans.any?
+            = form_tag({ action: :new }, { method: :get }) do
+              .form-group.form-inline
+                = label :plan, :delivery_at
+                = select_tag "plan[delivery_at]", options_for_select([["10:00 〜 11:00", "10:00"], ["11:00 〜 12:00", "11:00"], ["12:00 〜 13:00", "12:00"], ["13:00 〜 14:00", "13:00"]], selected: @delivery_at), { class: "form-control" }
+                = submit_tag "探す", { class: "btn btn-default" }
+            .form
+              - @plans.each_with_index do |plan, index|
+                - contract_size = plan[:order_menus].size
+                .plan
+                  %h2.plan__title= "#{contract_size}日間　#{plan[:price]*contract_size}円プラン"
+                  .plan__images
+                    - plan[:menus][0..3].each do |menu|
+                      = image_tag menu.image_url
+                  .plan__shops= "提供店：#{shop_sample(plan[:shops])}"
+                  %button.pull-right.btn.btn-warning(type="button" data-toggle="modal" data-target="#plan-#{index}") 詳しく見る
+                  .clearfix
+                .modal.fade(tabindex="-1" role="dialog" id="plan-#{index}")
+                  .modal-dialog(role="document")
+                    .modal-content
+                      .modal-header
+                        %button.close(type="button" data-dismiss="modal" aria-label="Close")
+                          %span(aria-hidden="true") &times;
+                        %h4.modal-title= "#{contract_size}日間　#{plan[:price]*contract_size}円プラン"
+                      .modal-body
+                        .row
+                          .col-xs-10.col-xs-offset-1
+                            .form-window
+                              %h1.form-window__heading 注文書
+                              .form-window__body
+                                .note
+                                  下記の商品のうち5品が指定時間に配達されます
+                                = form_tag({ action: :create }, { class: "form-horizontal" }) do
+                                  .form-group
+                                    = hidden_field_tag "plan[price]", plan[:price]*contract_size
+                                    %label.col-sm-3(for="start_at") 配達日
+                                    = hidden_field_tag "plan[start_at]", plan[:start_at]
+                                    = hidden_field_tag "plan[end_at]", plan[:end_at]
+                                    .col-sm-9= "#{plan[:start_at].strftime("%Y年%m月%d日")} 〜 #{plan[:end_at].strftime("%Y年%m月%d日")}"
+                                  .form-group
+                                    %label.col-sm-3(for="delivery_at") 配達時間
+                                    = hidden_field_tag "plan[delivery_at]", plan[:delivery_at]
+                                    .col-sm-9= "毎日#{plan[:delivery_at]} 〜 #{Time.zone.parse(plan[:delivery_at]).advance(hours: 1).strftime('%H:%M')}にお届け"
+                                  - plan[:order_menus].each do |menu|
+                                    = hidden_field_tag "plan[orders][][menu_id]", menu.id
+                                    = hidden_field_tag "plan[orders][][shop_id]", menu.shop_id
+                                  = submit_tag "注文確定", { class: "pull-right btn btn-default" }
+                                  .clearfix
+                          - plan[:shops].each do |shop|
+                            .col-xs-12.shop
+                              %h2.shop__title= shop.name
+                              .row
+                                - shop.menus.each do |menu|
+                                  .shop__menu.col-xs-6.col-md-3
+                                    = image_tag menu.image_url, { class: "menu__image" }
+                                    .text-center= menu.name
+                                    .text-center= menu.price
+          - else
+            現在注文できるプランはありません
+

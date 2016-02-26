@@ -26,6 +26,7 @@ shops.elements.each("Results/Shop") do |s|
     pref: pref,
     city: city,
     address: address,
+    capability: 10,
     open_at: "#{Random.new.rand(6) + 6}:00",
     close_at: "#{Random.new.rand(7) + 17}:00"
   })
@@ -78,7 +79,7 @@ end
     plan.orders.build({
       user_id: user.id,
       menu_id: menu.id,
-      shop_id: menu.shop.id,
+      shop_id: menu.shop_id,
       delivery_at: Time.zone.parse("#{(start_at + k.days).strftime("%Y/%m/%d")} #{delivery_at}")
     })
     price += menu.price

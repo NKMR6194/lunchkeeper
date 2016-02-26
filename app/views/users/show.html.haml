@@ -4,7 +4,7 @@
       .col-xs-12
         = link_to root_path, { class: "logo pull-left" } do
           = render "partials/logo"
-        = link_to "プラン一覧", plans_path, { class: "pull-right btn btn-warning" }
+        = link_to "プラン一覧", new_plan_path, { class: "pull-right btn btn-warning" }
         = link_to "ログアウト", destroy_user_session_path, { method: :delete, class: "pull-right btn btn-danger margin-right" }
         .clearfix
         %h2
