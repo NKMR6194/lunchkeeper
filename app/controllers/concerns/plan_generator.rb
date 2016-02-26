@@ -104,7 +104,7 @@ module PlanGenerator
     0.upto(result.size-1){ |i| plan_shop << result[i].transpose[0]}
 
     temp = []
-    temp << result.collect{|c| c.transpose[1].inject(0) { |r, e| r + e }.to_f/c.size}
+    temp << result.collect{|c| (c.transpose[1].inject(0) { |r, e| r + e }.to_f/(c.size * 100)).ceil * 100 }
     0.upto(temp[0].size-1){ |i| plan_price_avg << temp[0][i]}
 
     plan_shop.each do |plan|
@@ -171,16 +171,16 @@ module PlanGenerator
     return false
   end
 
-  def check order_menu,year,month,day,hour
+  def check order_menu,delivery_time_of_first_day
     check_map = Array.new(5){ Array.new(5, true)}
 
     0.upto(4){ |d|
       order_menu.each_with_index do |m,index|
-        t1 = Time.new(year,month,day+d,hour)
-        t2 = Time.new(year,month,day+d,hour+1)
+        t1 = delivery_time_of_first_day.advance(days: d)
+        t2 = delivery_time_of_first_day.advance(days: d, hours: 1)
         current_order_num = 0
         menu = Menu.find(m)
-        #current_order_num = Order.where('shop_id == ? and delivery_at >= ? and delivery_at <= ?', menu.shop_id,t1,t2).count
+        #current_order_num = Order.where('shop_id == ? and delivery_time_of_first_day >= ? and delivery_time_of_first_day <= ?', menu.shop_id,t1,t2).count
         check_map[d][index] = false if current_order_num >= menu.shop.capability
       end
     }
@@ -190,7 +190,7 @@ module PlanGenerator
     result
   end
 
-  def find_candidate order_menu,plan_menu,year,month,day,hour
+  def find_candidate order_menu,plan_menu,delivery_time_of_first_day
     1.upto(2){ |diff|
       4.downto(0){ |i|
         cur = plan_menu.transpose[0].index(order_menu[i][0])
@@ -200,7 +200,7 @@ module PlanGenerator
 
         temp = order_menu[i]
         order_menu[i] = plan_menu[cur-diff]
-        result =  check order_menu.transpose[0],year,month,day,hour
+        result =  check order_menu.transpose[0],delivery_time_of_first_day
         if result != nil
           order_menu = result.collect{|c| order_menu[c]}
           return true
@@ -211,7 +211,14 @@ module PlanGenerator
     return false
   end
 
-  def plan_generate shoplist,plan_shop,plan_price_avg,plan_menu,order_menu,year,month,day,hour
+  def plan_generate shops, delivery_at
+    shoplist       = shops
+    plan_shop      = []
+    plan_price_avg = []
+    plan_menu      = []
+    order_menu     = []
+    delivery_time_of_first_day = Time.zone.parse("#{Time.zone.now.strftime("%Y/%m/%d")} #{delivery_at}")
+
     # クラスタリング
     cluster_result = cluster shoplist
 
@@ -236,10 +243,10 @@ module PlanGenerator
 
     # メニューの順番を調整（日付を確認してその店が配達できるか確認する）
     0.upto(order_menu.size-1){ |i|
-      result = check order_menu[i].transpose[0],year,month,day,hour
+      result = check order_menu[i].transpose[0],delivery_time_of_first_day
       if result != nil
         order_menu[i] = result.collect{|c| order_menu[i][c]}
-      elsif find_candidate order_menu[i],plan_menu[i],year,month,day,hour
+      elsif find_candidate order_menu[i],plan_menu[i],delivery_time_of_first_day
         plan_shop[i] = nil
         plan_price_avg[i] = nil
         plan_menu[i] = nil
@@ -250,5 +257,19 @@ module PlanGenerator
       plan_menu.delete_if{|x| x==nil}
       order_menu.delete_if{|x| x==nil}
     }
+
+    plans = []
+    plan_shop.each_with_index do |shops, index|
+      plans.push({
+        start_at: delivery_time_of_first_day,
+        end_at: delivery_time_of_first_day.advance(days: 5),
+        delivery_at: delivery_at,
+        shops: shops,
+        price: plan_price_avg[index],
+        menus: plan_menu[index].map { |m| Menu.find(m[0]) },
+        order_menus: order_menu[index].map { |m| Menu.find(m[0]) }
+      })
+    end
+    plans.sort_by { |p| p[:price] }
   end
 end
