@@ -3,4 +3,6 @@ class Plan < ActiveRecord::Base
   has_many :orders
   has_many :plan_shops
   enum state: {contracting: 0, done: 1}
+
+  default_scope ->{order(created_at: :desc)}
 end
