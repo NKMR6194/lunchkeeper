@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_shop!
   before_action :set_user
 
+  include Position
+
   def show
     @active_plan = Plan.find_by(user_id: @user.id, state: Plan.states[:contracting])
     @old_plans   = Plan.where(user_id: @user.id, state: Plan.states[:done]).limit(10)
@@ -12,7 +14,11 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      address = user_params[:pref] + user_params[:city] + user_params[:address]
+      lat, lng = find_position(address)
+      @user.assign_attributes(user_params)
+      @user.assign_attributes(latitude: lat, longitude: lng)
+      if @user.update
         format.html { redirect_to user_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
